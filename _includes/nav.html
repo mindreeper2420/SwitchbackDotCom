@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ page.relative_path }}">
+    <img src="{{ page.relative_path }}img/swblogo.gif" height="30" class="d-inline-block align-top" alt="Switchback, Inc." />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item" {% if page.navbar_active == "home" %} class="active"{% endif %}>
+          <a href="{{ page.relative_path }}" class="nav-link">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+      <li class="nav-item" {% if page.navbar_active == "contact" %} class="active"{% endif %}>
+        <a href="{{ page.relative_path }}pages/contact.html" class="nav-link">Contact</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <a href="https://github.com/SwitchbackInc">
+        <i class="fa fa-github-alt" aria-hidden="true" style="color: white;"></i>
+      </a>
+      &nbsp;
+      <a href="">
+        <i class="fa fa-twitter" aria-hidden="true" style="color: white;"></i>
+      </a>
+    </span>
+  </div>
+</nav>

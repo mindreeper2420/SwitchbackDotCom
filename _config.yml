@@ -1,8 +1,13 @@
-title: Switchbackdotcom
-description: Switchback.com
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-minimal
-
-gems:
-  - jekyll-mentions
+name: Switchback, Inc.
+markdown: kramdown
+sass:
+  style: compressed
+exclude: [
+  "deploy",
+  "gemfile",
+  "Gemfile.lock",
+  "package.json",
+  "gulpfile.js",
+  "node_modules",
+  "_site"
+]
