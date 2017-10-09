@@ -8,8 +8,8 @@
   "scripts": {
     "publish-travis": "master _site",
     "install": "gulp initialize",
-    "refresh": "gulp cleanVendors && gulp",
-    "reinstall": "rimraf node_modules && npm install && gulp cleanVendors && gulp",
+    "refresh": "gulp cleanVendors && gulp copy && gulp sass",
+    "reinstall": "rimraf node_modules && npm install && gulp cleanVendors && gulp copy && gulp sass",
     "stylelint": "gulp sass",
     "site": "gulp sass && jekyll serve"
   },
