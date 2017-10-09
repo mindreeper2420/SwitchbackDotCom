@@ -1,0 +1,41 @@
+{
+  "name": "Switchback_Inc",
+  "title": "Switchback, Inc,",
+  "version": "1.0.0",
+  "author": "Switchback, Inc.",
+  "license": "Apache-2.0",
+  "description": "Website for Switchback, Inc.",
+  "scripts": {
+    "publish-travis": "master _site",
+    "install": "gulp initialize",
+    "refresh": "gulp cleanVendors && gulp",
+    "reinstall": "rimraf node_modules && npm install && gulp cleanVendors && gulp",
+    "stylelint": "gulp sass",
+    "site": "gulp sass && jekyll serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwitchbackInc/SwitchbackDotCom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SwitchbackInc/SwitchbackDotCom/issues"
+  },
+  "devDependencies": {
+    "del": "2.2.2",
+    "fs": "0.0.1-security",
+    "gulp": "3.9.1",
+    "gulp-header": "^1.8.9",
+    "gulp-notify": "2.2.0",
+    "gulp-real-favicon": "^0.2.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-stylelint": "^5.0.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5",
+    "rimraf": "2.6.1"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "font-awesome": "4.7.0"
+  }
+}

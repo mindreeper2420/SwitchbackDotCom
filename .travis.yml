@@ -1,0 +1,53 @@
+language: ruby
+
+cache:
+  bundler: true
+  directories:
+  - node_modules
+
+rvm:
+- 2.3.3
+
+addons:
+  apt:
+    packages:
+    - node
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - TRIGGER_REPO_SLUG=SwitchbackInc/SwitchbackDotCom
+  - TRIGGER_REPO_BRANCH=master
+  matrix:
+    secure: K02a6iaxIecKvps8m5HeVcOHBnxtHdlH8nIORwec2GnWhkZG+sLm2q5YIDZef06HmAtG/BHS+o9CQG5f9Ub1IUw4ccAlvpGfULFITENX2eh2a6WL/KRnTHNE6hT4Yw1eB2dSXKaiAQsm6rRAt4PpItZz7otdR8JcKTLqgqgZPr5rE/lnXN3XCXFROcRSeN2lCorBZAa1R9XijV8PawUxPlBY70okcX6ZzfKcUUKv+GeKmxg5vWjrwwuF40oHzNasSmP22pitBN5T0+1LD7QkPHGDOKYuM4ch1n3/+McPN0noQm4L/nVcazg7NQD/I/Je3buky4julWfyCPkoOXOoZTooKFvlyQi6mgXT/duyzqlLxHuDLyUUrFis2mvCV9UFQUYtNlk6ykhVG3QJmJ3Ls2yXRPxg3QUv8W/gT368EL1QetqPJrkwgAZ8PFzm2ywIlkRod0i0ivjZiKgZvZQ5jqLBpCaad0uFz2jG5Va35lS+fsllMoXCNvDs61Ym95ziqvIIhNFKriX7VBVYXehxRFWoejlysT0fRcmFbyVKJychiLYBX/exQ+Gm7Vr+1vtDWvfjiVpYWpzWSE7hOHAgOxDDZQN3jzKmUzlM4cgdmz7R3FP/MW3HapO3yrWTC+xfKX/nzxEWxbljHez2JMxuo65/Met3VTyd+joCPJT0Vyw=
+
+before_install:
+- chmod +x build.sh
+- npm install
+- npm run refresh
+- npm run stylelint
+- gem install jekyll
+- gem install html-proofer
+
+install: true
+
+script:
+- jekyll build ./_site
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  on:
+    branch: master
+
+branches:
+  only:
+  - master
+  - "/.*/"
+
+after_success:
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+  deploy.sh
+
+sudo: false
